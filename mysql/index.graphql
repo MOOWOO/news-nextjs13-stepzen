@@ -1,24 +1,24 @@
 type Post {
-  id : ID!
-  company : String!
-  title : String!
-  link : String!
-  author : String!
-  published : String!
-  published_parsed : String!
-  summary : String!
-  media_type : String!
-  media_content : String!
-  summary_detail_type : String!
-  summary_detail_value : String!
-  dump : String!
-  evt_date : DateTime!
+  id : ID
+  company : String
+  title : String
+  link : String
+  author : String
+  published : String
+  published_parsed : String
+  summary : String
+  media_type : String
+  media_content : String
+  summary_detail_type : String
+  summary_detail_value : String
+  dump : String
+  evt_date : DateTime
 }
 
 type Query {
-  getPost(id: ID!): Post
+  getPost(id: ID): Post
         @dbquery(type: "mysql", table: "tb_posts_donga", configuration: "mysql_config")
-  getPosts(id: ID!): [Post]
+  getPosts(id: ID): [Post]
         @dbquery(
             type: "mysql",
             query: "SELECT * FROM tb_posts_donga WHERE ? >= id",
