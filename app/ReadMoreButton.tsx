@@ -3,14 +3,14 @@
 import { useRouter } from "next/navigation";
 
 type Props = {
-  mediastack: Mediastack;
+  bundle: Bundle;
 };
 
-function ReadMoreButton({ mediastack }: Props) {
+function ReadMoreButton({ bundle }: Props) {
   const router = useRouter();
 
   const handleClick = () => {
-    const queryString = Object.entries(mediastack)
+    const queryString = Object.entries(bundle)
       .map(([key, value]) => `${key}=${value}`)
       .join("&");
     const url = `/article?${queryString}`;

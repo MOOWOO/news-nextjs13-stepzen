@@ -12,7 +12,7 @@ function Header() {
         <Link href="/" prefetch={false}>
           <h1 className="font-serif text-4xl text-center">
             <span className="underline decoration-6 decoration-orange-400">
-              LAB.LOG
+            *.LO
             </span>{" "}
           </h1>
         </Link>

@@ -1,9 +1,9 @@
 export const categories: Category[] = [
-  "general",
-  "business",
-  "entertainment",
-  "health",
+  "politics",
+  "national",
+  "economy",
+  "international",
   "science",
-  "sports",
-  "technology",
+  "culture",
+  "sports"
 ];

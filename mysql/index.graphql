@@ -1,27 +1,66 @@
-type Post {
-  id : ID
-  company : String
-  title : String
-  link : String
-  author : String
-  published : String
-  published_parsed : String
-  summary : String
-  media_type : String
-  media_content : String
-  summary_detail_type : String
-  summary_detail_value : String
-  dump : String
-  evt_date : DateTime
+type Bundle {
+  id: ID
+  company: String
+  title: String
+  link: String
+  author: String
+  published: String
+  published_parsed: String
+  summary: String
+  media_type: String
+  media_content: String
+  summary_detail_type: String
+  summary_detail_value: String
+  ai_img_path: String,
+  ai_summary: String,
+  ai_title: String,
+  prompt: String, 
+  evt_date: DateTime
+}
+
+type Pagination {
+  count: Int
+  limit: Int
+  offset: Int
+  total: Int
+}
+
+type Root {
+  data: [Bundle]
+  pagination: Pagination
 }
 
 type Query {
-  getPost(id: ID): Post
-        @dbquery(type: "mysql", table: "tb_posts_donga", configuration: "mysql_config")
-  getPosts(id: ID): [Post]
-        @dbquery(
-            type: "mysql",
-            query: "SELECT * FROM tb_posts_donga WHERE ? >= id",
-            configuration: "mysql_config"
-        )  
+  getBundleList:[Bundle]
+   @dbquery(type: "mysql", table: "tb_posts_donga", configuration: "mysql_config")
+}
+
+type Query {
+  getBundleByCategory(category: String!, limit: Int!): [Bundle]
+    @dbquery(
+      type: "mysql"
+      query:
+       "select * from tb_posts_donga where `category` like ? ORDER BY `id` DESC limit ?"
+      configuration: "mysql_config"
+    )
+}
+
+type Query {
+  findByCompany(company: String!, limit: Int!): [Bundle]
+    @dbquery(
+      type: "mysql"
+      query:
+       "select * from tb_posts_donga where `company` LIKE ? ORDER BY `id` DESC limit ?"
+      configuration: "mysql_config"
+    )
+}
+
+type Query {
+  getBundleListLimit50:[Bundle]
+    @dbquery(
+      type: "mysql"
+      query:
+      "SELECT C.id, company, title, link, author, published, published_parsed, summary, media_type, media_content, summary_detail_type, summary_detail_value, C.ai_img_path as ai_img_path, C.ai_summary as ai_summary, C.ai_title as ai_title, C.prompt as prompt, C.evt_date FROM tb_posts_donga as P JOIN tb_aicontents_donga as C ON C.id = P.id ORDER BY `id` DESC limit 50"
+      configuration: "mysql_config"
+    )
 }

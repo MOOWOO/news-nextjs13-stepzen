@@ -1,33 +1,40 @@
-type Article = {
-  author: string | null;
-  category: string;
-  country: string;
-  description: string;
-  image: string | null;
-  language: string;
-  published_at: string;
-  source: string;
-  title: string;
-  url: string;
+type Bundle = {
+  id : int
+  company : String
+  title : String
+  link : String
+  author : String
+  published : String
+  published_parsed : String
+  summary : String
+  media_type : String
+  media_content : String
+  summary_detail_type : String
+  summary_detail_value : String
+  ai_img_path: String
+  ai_summary: String
+  ai_title: String
+  prompt: String
+  evt_date : timestamp
 };
 
 type Pagination = {
-  count: Int;
-  limit: Int;
-  offset: Int;
-  total: Int;
+  count: int;
+  limit: int;
+  offset: int;
+  total: int;
 };
 
 type NewsResponse = {
-  pagination: Pagination;
-  data: Article[];
+  map(arg0: (bundle: any) => JSX.Element): React.ReactNode;
+  data: Bundle[];
 };
 
 type Category =
-  | "business"
-  | "entertainment"
-  | "general"
-  | "health"
-  | "science"
-  | "sports"
-  | "technology";
+|"politics"
+|"national"
+|"economy"
+|"international"
+|"science"
+|"culture"
+|"sports";

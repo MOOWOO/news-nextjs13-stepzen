@@ -6,12 +6,7 @@ type Props = {
 };
 
 async function SearchPage({ searchParams }: Props) {
-  const news: NewsResponse = await fetchNews(
-    "general",
-    searchParams?.term,
-    true
-  );
-
+  const news: NewsResponse = await fetchNews
   return (
     <div>
       <h1 className="headerTitle">Search Results for: {searchParams?.term}</h1>

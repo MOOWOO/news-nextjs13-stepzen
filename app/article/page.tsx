@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import LiveTimestamp from "../LiveTimestamp";
 
 type Props = {
-  searchParams?: Mediastack;
+  searchParams?: Bundle;
 };
 
 function ArticlePage({ searchParams }: Props) {
@@ -13,34 +13,36 @@ function ArticlePage({ searchParams }: Props) {
     return notFound();
   }
 
-  const mediastack: Mediastack = searchParams;
+  const bundle: Bundle = searchParams;
 
   return (
     <article>
       <section className="flex flex-col lg:flex-row pb-24 px-0 lg:px-10">
-        {mediastack.image && (
+        {bundle.ai_img_path+"" && (
           <img
             className="h-50 max-w-md mx-auto md:max-w-lg lg:max-w-xl object-cover rounded-lg shadow-md"
-            src={mediastack.image}
-            alt={mediastack.title}
+            src={bundle.ai_img_path+""}
+            alt={bundle.ai_title+""}
           />
         )}
 
         <div className="px-10">
           <h1 className="headerTitle px-0 no-underline pb-2">
-            {mediastack.title}
+            {bundle.ai_title}
           </h1>
+          <p className="text-slate-600">
+              <LiveTimestamp time={bundle.evt_date+""} />
+          </p>
+          <div className="flex">
+            {/* <h2 className="font-bold">By: {bundle.author}</h2> */}
+            <h2 className="font-bold">{bundle.ai_summary}</h2>
 
-          <div className="flex divide-x-2 space-x-4">
-            <h2 className="font-bold">By: {mediastack.author}</h2>
-            <h2 className="font-bold pl-4">Source: {mediastack.source}</h2>
-            <p className="pl-4">
-              <LiveTimestamp time={mediastack.published_at} />
-            </p>
           </div>
 
-          <p className="pt-4">{mediastack.description}</p>
-          <p className="pt-4">Link - {mediastack.url}</p>
+          {/* <p className="pt-4">{bundle.summary_detail_value}</p> */}
+          <br/>
+          <br/>
+          <a className="text-xs line-clamp-2 text-sky-400" href={bundle.link+""}> : LINK</a>
         </div>
       </section>
     </article>
