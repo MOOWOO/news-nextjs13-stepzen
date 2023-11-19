@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import LiveTimestamp from "../LiveTimestamp";
+import LiveTimestamp from "../../app/LiveTimestamp";
 
 type Props = {
   searchParams?: Bundle;
