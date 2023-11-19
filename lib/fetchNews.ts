@@ -30,7 +30,7 @@ const fetchNews = async () => {
     "https://saintepazanne.stepzen.net/api/hissing-quokka/__graphql",
     {
       method: "POST",
-      cache: "default", //"no-cache",
+      cache: "no-cache",
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Apikey ${process.env.STEPZEN_API_KEY}`,
