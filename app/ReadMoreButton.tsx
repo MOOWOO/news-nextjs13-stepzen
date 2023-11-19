@@ -13,7 +13,7 @@ function ReadMoreButton({ bundle }: Props) {
     const queryString = Object.entries(bundle)
       .map(([key, value]) => `${key}=${value}`)
       .join("&");
-    const url = `/article?${queryString}`;
+    const url = `article?${queryString}`;
     console.log(url);
     router.push(url);
   };

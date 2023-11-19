@@ -35,5 +35,11 @@
   },
   "resolutions": {
     "@types/react": "17.0.2"
-  }
+  },
+  "name": "news-nextjs13-stepzen",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/MOOWOO/news-nextjs13-stepzen.git",
+  "author": "kgmin <cdc.asic@gmail.com>",
+  "license": "MIT"
 }
