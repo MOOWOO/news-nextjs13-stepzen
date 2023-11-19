@@ -46,7 +46,6 @@ const fetchNewsByCategory = async (category?: Category | string,) => {
   );
   const newsResponse = await res.json();
   console.log(newsResponse)
-  cache.a
   const news = newsResponse.data.getBundleListByCategoryLimit50;
   return news;
 };
