@@ -1,18 +1,16 @@
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
+
 /** @type {import('next').NextConfig} */
-module.exports = {
+const nextConfig = {
   reactStrictMode: true,
   experimental: {
     appDir: true,
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  reactStrictMode: true,
-  i18n: {
-    locales: ["en"],
-    defaultLocale: "en",
-  },
-};
+}
+
+module.exports = (_phase, { defaultConfig }) => {
+  const plugins = [withBundleAnalyzer]
+  return plugins.reduce((acc, plugin) => plugin(acc), { ...defaultConfig, ...nextConfig })
+}

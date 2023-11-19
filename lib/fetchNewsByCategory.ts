@@ -31,7 +31,7 @@ const fetchNewsByCategory = async (category?: Category | string,) => {
     "https://saintepazanne.stepzen.net/api/hissing-quokka/__graphql",
     {
       method: "POST",
-      cache: "no-cache",
+      cache: "default", //"no-cache",
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Apikey ${process.env.STEPZEN_API_KEY}`,
@@ -46,6 +46,7 @@ const fetchNewsByCategory = async (category?: Category | string,) => {
   );
   const newsResponse = await res.json();
   console.log(newsResponse)
+  cache.a
   const news = newsResponse.data.getBundleListByCategoryLimit50;
   return news;
 };
