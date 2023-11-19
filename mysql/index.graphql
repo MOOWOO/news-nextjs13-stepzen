@@ -64,3 +64,13 @@ type Query {
       configuration: "mysql_config"
     )
 }
+
+type Query {
+  getBundleListByCategoryLimit50(category: String):[Bundle]
+    @dbquery(
+      type: "mysql"
+      query:
+      "SELECT C.id, company, title, link, author, published, published_parsed, summary, media_type, media_content, summary_detail_type, summary_detail_value, C.ai_img_path as ai_img_path, C.ai_summary as ai_summary, C.ai_title as ai_title, C.prompt as prompt, C.evt_date FROM tb_posts_donga as P JOIN tb_aicontents_donga as C ON C.id = P.id WHERE LOWER(P.category) LIKE LOWER(?) ORDER BY `id` DESC limit 50"
+      configuration: "mysql_config"
+    )
+}

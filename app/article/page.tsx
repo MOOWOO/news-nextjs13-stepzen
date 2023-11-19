@@ -35,7 +35,8 @@ function ArticlePage({ searchParams }: Props) {
           </p>
           <div className="flex">
             {/* <h2 className="font-bold">By: {bundle.author}</h2> */}
-            <h2 className="font-bold">{bundle.ai_summary}</h2>
+            <h2 className="font-normal">{bundle.ai_summary}</h2> 
+            
 
           </div>
 

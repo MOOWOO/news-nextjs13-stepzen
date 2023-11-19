@@ -11,9 +11,7 @@ function NavLink({ category, isActive }: Props) {
 
   const onClick = async (event) => {
    event.preventDefault();
-  //  updateDialogVars(...yourConfig);
    if(true) {
-    alert("Make Sort Function!!")
     await router.push(event.target.href);
    }
   }

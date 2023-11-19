@@ -1,7 +1,6 @@
 import "../styles/globals.css";
 import Header from "./Header";
 import Providers from "./Providers";
-
 export default function RootLayout({
   children,
 }: {
@@ -14,6 +13,7 @@ export default function RootLayout({
           <Header />
           <div className="max-w-6xl mx-auto">{children}</div>
       </Providers>
+      
       </body>
     </html>
   );

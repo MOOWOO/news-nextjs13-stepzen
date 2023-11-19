@@ -10,4 +10,9 @@
     .headerTitle {
         @apply text-4xl font-mono capitalize px-10 pt-5 underline decoration-orange-400 decoration-2 underline-offset-4 decoration-double
     }
+
+    .navSlide {
+        @apply hover:underline decoration-orange-400 decoration-2 active:underline underline-offset-4 rounded-full cursor-pointer capitalize transition-transform duration-200 ease-out p-2;
+    }
 }
+

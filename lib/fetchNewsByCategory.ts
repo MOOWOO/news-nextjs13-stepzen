@@ -1,9 +1,10 @@
 import { gql } from "graphql-request";
 
-const fetchNews = async () => {
+const fetchNewsByCategory = async (category?: Category | string,) => {
+
   const query = gql`
-  query MyQuery {
-    getBundleListLimit50{
+  query MyQuery($category: String) {
+    getBundleListByCategoryLimit50(category: $category) {
         summary
         author
         company
@@ -35,21 +36,18 @@ const fetchNews = async () => {
         "Content-Type": "application/json",
         "Authorization": `Apikey ${process.env.STEPZEN_API_KEY}`,
       },
-      next: {revalidate: 0},
       body: JSON.stringify({
         query,
-        variables: {}
+        variables: {
+          category: category,
+        }
       }),
     }
   );
   const newsResponse = await res.json();
   console.log(newsResponse)
-  // Sort function by images vs not images present
-  const news = newsResponse.data.getBundleListLimit50;
+  const news = newsResponse.data.getBundleListByCategoryLimit50;
   return news;
 };
 
-export default fetchNews;
-
-// Example Import
-// stepzen import curl "http://api.mediastack.com/v1/news?access_key=abc"
+export default fetchNewsByCategory;

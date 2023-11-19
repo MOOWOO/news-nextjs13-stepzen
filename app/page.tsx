@@ -3,7 +3,7 @@ import NewsList from "./NewsList";
 
 async function Homepage() {
   // fetch the news data
-  const news: NewsResponse = await fetchNews
+  const news: NewsResponse = await fetchNews()
 
   return (
     <div>
